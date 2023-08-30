@@ -55,12 +55,15 @@
         <!-- media-manager -->
         @include('shop.vendor.inc.media-manager.media-manager')
 
+
+
     </main>
     <!--main content wrapper end-->
 
     <!-- delete modal -->
     @include('shop.vendor.inc.deleteModal')
 
+    @include('shop.inc.qrcodeModal')
     <!--build:js-->
     @include('shop.vendor.inc.scripts')
     <!--endbuild-->

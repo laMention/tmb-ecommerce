@@ -235,7 +235,10 @@
     @endcan
 
     <!-- Shops included -->
-    @include('shop.backend.inc.sidebarMenus')
+    @include('shop.vendor.inc.sidebarMenuVendor')
+
+   
+
 
     <!-- Users -->
     <li class="side-nav-title side-nav-item nav-item">

@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\RefundsController;
 use App\Http\Controllers\Frontend\RewardPointsController;
 use App\Http\Controllers\Frontend\WalletController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\OnPlaceOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -181,3 +182,5 @@ Route::group(['prefix' => ''], function () {
 Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
 Route::get('/shop-product/{shop_id}', [ShopController::class, 'shopProducts'])->name('shops.products');
 
+// Commander sur place
+Route::get('/commander-sur-place', [OnPlaceOrderController::class, 'index'])->name('onplace.order.index');

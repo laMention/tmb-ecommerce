@@ -52,6 +52,9 @@ use App\Http\Controllers\Shop\Manager\Pos\PosController;
 use App\Http\Controllers\Shop\Manager\Roles\RolesController;
 use App\Http\Controllers\Shop\Manager\Reports\ReportsController;
 // use App\Http\Controllers\Shop\Backend\ShopManagementController;
+use App\Http\Controllers\Shop\Backend\WaiterController;
+use App\Http\Controllers\Shop\Backend\TableController;
+use App\Http\Controllers\Shop\Backend\ServirController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -482,6 +485,42 @@ Route::group(
         Route::get('/edit-shop', [SettingsController::class, 'index'])->name('vendor.shops.edit');
         Route::get('/edit-setting-shop', [SettingsController::class, 'editSettingShop'])->name('vendor.shops.editSettingShop');
 
+        #waiters
+        Route::group(['prefix' => 'waiters'], function () {
+            Route::get('/', [WaiterController::class, 'index'])->name('vendor.waiters.index');
+            
+            Route::get('/add-waiter', [WaiterController::class, 'create'])->name('vendor.waiters.create');
+            Route::post('/add-waiter', [WaiterController::class, 'store'])->name('vendor.waiters.store');
+            Route::get('/show-waiter/{id}', [WaiterController::class, 'show'])->name('vendor.waiters.show');
+            Route::get('/edit-waiter/{id}', [WaiterController::class, 'edit'])->name('vendor.waiters.edit');
+            Route::post('/update-waiter', [WaiterController::class, 'update'])->name('vendor.waiters.update');
+            Route::get('/delete-waiter/{id}', [WaiterController::class, 'destroy'])->name('vendor.waiters.delete');
+            Route::post('/update-waiter-status', [WaiterController::class, 'updateWaiterStatus'])->name('vendor.waiters.updateStatus');
+
+            Route::post('/update-order-waiter-status', [WaiterController::class, 'updateStatusCmdServer'])->name('vendor.order-waiters.updateStatus');
+            
+            Route::post('/attribuer-cmd', [WaiterController::class, 'attachOrderToServeur'])->name('vendor.order-waiters.attachOrderToServeur');
+
+        });
+
+        #Tables
+        Route::group(['prefix' => 'tables'], function () {
+            Route::get('/', [TableController::class, 'index'])->name('vendor.table.index');
+            Route::get('/add-table', [TableController::class, 'create'])->name('vendor.table.create');
+
+            Route::post('/add-table', [TableController::class, 'store'])->name('vendor.table.store');
+            Route::get('/show-table/{id}', [TableController::class, 'show'])->name('vendor.table.show');
+            Route::get('/edit-table/{id}', [TableController::class, 'edit'])->name('vendor.table.edit');
+            Route::post('/update-table', [TableController::class, 'update'])->name('vendor.table.update');
+            Route::get('/delete-table/{id}', [TableController::class, 'destroy'])->name('vendor.table.delete');
+            Route::get('/update-table-status', [TableController::class, 'reinitializeTable'])->name('vendor.table.reinitializeTable');
+
+
+        });
+        #Commandes sur places
+        Route::get('/on-place-orders', [ServirController::class, 'index'])->name('vendor.onplaceOrder.index');
+        Route::get('/show-place/{id}', [ServirController::class, 'show'])->name('vendor.onplaceOrder.show');
+         Route::get('/delete-on-place-orders/{id}', [ServirController::class, 'destroy'])->name('vendor.onplaceOrder.delete');
 
         // Route::group(['prefix' => 'shops'], function(){
         //     Route::get('/', [ShopManagementController::class, 'index'])->name('vendor.shops.index');

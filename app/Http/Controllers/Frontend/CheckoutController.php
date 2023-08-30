@@ -284,7 +284,10 @@ class CheckoutController extends Controller
 
         // todo:: change this from here
         try {
+            // Envoyer une notification à l'utilisateur
             Notification::send($user, new OrderPlacedNotification($orderGroup->order));
+
+            // Envoyer une notifixation au gerant de la boutique
         } catch (\Exception $e) {
         }
         return getView('pages.checkout.invoice', ['orderGroup' => $orderGroup]);

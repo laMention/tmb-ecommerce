@@ -45,7 +45,13 @@
                     </form>
                 </div>
                 <ul class="navbar-nav flex-row align-items-center tt-top-navbar">
+                    <li>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quickviewqrcode_modal">
+                              Votre QR code
+                        </button>
 
+                        
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('home') }}" class="nav-link tt-visit-store" target="_blank">
                             <i data-feather="globe" class="me-2"></i>

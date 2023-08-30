@@ -1,6 +1,6 @@
 <!-- Shops -->
 @php
-    $shopsActiveRoutes = ['admin.shops.index', 'admin.shops.create', 'admin.shops.edit'];
+    $shopsActiveRoutes = ['shop.shops.index', 'shop.shops.create', 'shop.shops.edit'];
 @endphp
 
 @canany(['shops','add_shop'])
@@ -19,15 +19,15 @@
         <ul class="side-nav-second-level">
             @can('shops')
             <li
-                class="{{areActiveRoutes(['admin.shops.index'], 'tt-menu-item-active')}}">
-                <a href="{{ route('admin.shops.index') }}">{{ localize('Shops') }}</a>
+                class="{{areActiveRoutes(['shop.shops.index'], 'tt-menu-item-active')}}">
+                <a href="{{ route('shop.shops.index') }}">{{ localize('Shops') }}</a>
             </li>
             @endcan
 
             @can('add_shop')
-            <li class="{{ areActiveRoutes(['admin.shops.create'], 'tt-menu-item-active') }}">
-                <a href="{{ route('admin.shops.create') }}"
-                    class="{{ areActiveRoutes(['admin.shops.createe']) }}">{{ localize('Add shops') }}</a>
+            <li class="{{ areActiveRoutes(['shop.shops.create'], 'tt-menu-item-active') }}">
+                <a href="{{ route('shop.shops.create') }}"
+                    class="{{ areActiveRoutes(['shop.shops.createe']) }}">{{ localize('Add shops') }}</a>
             </li>
             @endcan
       
@@ -40,9 +40,12 @@
 
 @can('shop_staff')
 <li class="side-nav-item nav-item">
-    <a href="{{route('admin.shops.shopsEmployees')}}" class="side-nav-link">
+    <a href="{{route('shop.shops.shopsEmployees')}}" class="side-nav-link">
         <span class="tt-nav-link-icon"> <i data-feather="users"></i></span>
         <span class="tt-nav-link-text">{{ localize('Shops staffs') }}</span>
     </a>
 </li>
 @endcan
+
+ <!-- Waiters included -->
+ @include('shop.backend.waiters.partials.sidebarWaiter')

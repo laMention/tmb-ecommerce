@@ -204,6 +204,12 @@
         </a>
     </li>  
     @endcan
+
+    <!-- Waiters included -->
+    @include('shop/backend/waiters/partials/sidebarWaiter')
+
+
+    @include('shop/backend/tables/partials/sidebarMenuTable')
    
    @php
         $appearanceShopActiveRoutes = ['vendor.shops.edit', 'vendor.shops.editSettingShop'];

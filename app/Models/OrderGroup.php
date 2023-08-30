@@ -47,4 +47,14 @@ class OrderGroup extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
+    }
+
+    // public function servir()
+    // {
+    //     return $this->hasMany(Servir::class);
+    // }
 }

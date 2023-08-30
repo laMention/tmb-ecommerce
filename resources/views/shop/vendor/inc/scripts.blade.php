@@ -13,6 +13,8 @@
 <script src="{{ asset('backend/assets/js/vendors/apex-scripts.js') }}"></script>
 <script src="{{ asset('backend/assets/js/app.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <!-- localizations & others -->
 <script>
     'use strict';
@@ -264,5 +266,26 @@
                 "' height='14' />" + state.text + "</div>"
             );
         }
+
+
+    })
+
+    $(document).ready(function(){
+        // alert("qr code")
+        function getQrCode(){
+            const qrText = document.getElementById("url").value
+
+            const qrCodeDiv =  document.getElementById("qrCode")
+
+            const qrcode = new QRCode(qrCodeDiv,{
+                text:qrText,
+                width:300,
+                height:300,
+                colorDark:"#000000",
+                colorLight:"#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            })
+        }
+        getQrCode()
     })
 </script>

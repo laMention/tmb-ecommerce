@@ -97,7 +97,7 @@ class VerificationController extends Controller
     public function sendOtp($phone, $otp)
     {
         (new SmsServices)->phoneVerificationSms($phone, $otp);
-        flash(localize('A verification code has been sent to your phone.'))->info();
+        flash(localize('Un code de vérification a été envoyé sur votre téléphone.'))->info();
     }
 
     # set as verified

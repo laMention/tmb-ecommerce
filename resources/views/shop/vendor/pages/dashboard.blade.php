@@ -111,18 +111,33 @@
                     </div>
 
                     <div class="col-xl-3">
+                        
+                        <div class="card h-10 mb-4 flex-column">
+                          <div class="card-body px-0">
+                            <div class="px-3">
+                              <h5 class="fw-bold mb-1">{{ localize('Qr Code') }}</h5>
+                              
+                            </div>
+                            <div class="tt-top-selling mt-3" style="height: 7rem;">
+                              <span class="px-3">
+                                <div style="height: 125px;width: 200px;    transform: translate(31px, -37px);"> {!! QrCode::size(140)->generate(route('shops.products',[auth()->user()->shop->id]).'&shop='.auth()->user()->shop->slug) !!} </div>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
                         <!-- top selling products -->
-                        <div class="card h-100 flex-column">
+                        <div class="card h-50 flex-column">
                             <div class="card-body px-0">
                                 <div class="px-3">
                                     <h5 class="fw-bold mb-1">{{ localize('Top Selling Products') }}</h5>
                                     <span class="text-muted">
                                         {{ localize('We have listed ' . \App\Models\Product::count() . ' total products.') }}</span>
                                 </div>
-                                <div class="tt-top-selling mt-3 h-25rem" data-simplebar>
+                                <div class="tt-top-selling mt-3 h-20rem" data-simplebar>
                                     <ul class="tt-top-selling-list list-unstyled mb-0 px-3">
                                         @php
-                                            $top_selling_products = \App\Models\Product::where('total_sale_count', '>', 0)->where('shop_id',auth()->user()->shop_id)
+                                            $top_selling_products = \App\Models\Product::where('total_sale_count', '>', 0)->where('shop_id',auth()->user()->shop->id)
                                                 ->orderBy('total_sale_count', 'DESC')
                                                 ->take(15)
                                                 ->get();

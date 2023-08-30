@@ -11,6 +11,7 @@ class Order extends Model
 
     protected $guarded = [];
 
+
     public function scopeIsPaid($query)
     {
         return $query->where('payment_status', paidPaymentStatus());
@@ -61,6 +62,8 @@ class Order extends Model
         return $query->where('delivery_status', orderCancelledStatus());
     }
 
+    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -85,4 +88,15 @@ class Order extends Model
     {
         return $this->belongsTo(Location::class);
     }
+
+    public function serveurs()
+    {
+        return $this->hasManyThrough(ServeurOrder::class);
+    }
+    
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
+    }
+
 }

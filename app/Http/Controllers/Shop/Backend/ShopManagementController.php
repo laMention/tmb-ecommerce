@@ -13,6 +13,7 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Carbon\Carbon;
 
+
 class ShopManagementController extends Controller
 {
     # construct
@@ -120,6 +121,11 @@ class ShopManagementController extends Controller
             $shop->save();
 
         }
+
+        // Generer le QR Code de la boutique
+        // QrCode::size(500)
+        //     ->format('png')
+        //     ->generate('raviyatechnical', public_path('images/qrcode.png'));
 
         flash(localize('Shop has been inserted successfully'))->success();
         return redirect()->route('admin.shops.index');

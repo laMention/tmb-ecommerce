@@ -191,10 +191,14 @@
                                 <li><a href="{{ route('products.index') }}">{{ localize('Products') }}</a></li>
                                 <li><a href="{{ route('home.campaigns') }}">{{ localize('Campaigns') }}</a>
                                 </li>
-                                <li><a href="{{ route('home.coupons') }}">{{ localize('Coupons') }}</a>
+                                {{-- <li><a href="{{ route('home.coupons') }}">{{ localize('Coupons') }}</a>
+                                </li> --}}
+
+                                <li><a href="{{ route('onplace.order.index') }}">{{ localize('Commander sur place') }}</a>
                                 </li>
 
-                                <li class="has-submenu">
+
+                                {{-- <li class="has-submenu">
                                     <a href="javascript:void(0);">{{ localize('Pages') }}<span
                                             class="ms-1 fs-xs float-end"><i
                                                 class="fa-solid fa-angle-down"></i></span></a>
@@ -223,7 +227,7 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         </nav>
                         <div

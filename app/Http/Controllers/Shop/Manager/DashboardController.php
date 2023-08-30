@@ -11,12 +11,16 @@ use App\Models\SystemSetting;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use QrCode;
 
 class DashboardController extends Controller
 {
     # admin dashboard
     public function index(Request $request)
     {
+        // $qrcode = QrCode::size(140)->generate(route('shops.products',[auth()->user()->shop->id]).'&shop='.auth()->user()->shop->slug);
+
+
         # total sales chart 
         $totalSalesChart = $this->totalSalesChart($request->timeline);
         $totalSalesData  = $totalSalesChart[0];
